@@ -32,18 +32,33 @@ public class ControllerIntegrationTest {
     private TestRestTemplate restTemplate;
  
     @Test
-    public void dadoIdClienteExistenteEntoncesDevuelvePerfilCliente() {
+    public void dadoIdExistenteEntoncesDevuelveOK() {
         // Given
+    	long id = 1;
     	Customer customer = new Customer("xxx", "yyyy");
-        doReturn(customer).when(service).findById(1);
+        doReturn(customer).when(service).findById(id);
  
        	// When
-        ResponseEntity<Customer> result = restTemplate.getForEntity("/customer/{id}", Customer.class, 1);
+        ResponseEntity<Customer> result = restTemplate.getForEntity("/customer/{id}", Customer.class, id);
 
         // Then
         assertThat(result.getStatusCode(), is(HttpStatus.OK));
         Customer customerResult = result.getBody();
         assertThat(customerResult.getFirstName(), is("xxx"));
+
+    }
+    
+    @Test
+    public void dadoIdExistenteEntoncesDevuelveBAD_REQUEST() {
+        // Given
+    	long id = 2;
+ 
+       	// When
+        ResponseEntity<String> result = restTemplate.getForEntity("/customer/{id}", String.class, id);
+
+        // Then
+        assertThat(result.getStatusCode(), is(HttpStatus.BAD_REQUEST));
+ 
 
     }
 
