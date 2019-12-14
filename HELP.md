@@ -18,7 +18,7 @@ The following guides illustrate how to use some features concretely:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
 
-
+--13DEC - Linea Base- Investigacion
 https://dev.to/lito/mysql-8-en-docker-de-manera-facil-y-para-toda-la-familia-3744
 docker container run --network im-net -p 3307:3306  -v mysql-8-data:/var/lib/mysql --name mysql-8 --restart always -d mysql/mysql-server:latest
 docker start mysql-8
@@ -36,3 +36,8 @@ https://github.com/eugenp/tutorials/blob/master/spring-mvc-simple-2/src/main/jav
 
 docker build -t imtest .
 docker container run -e "MYSQL_HOST=10.10.1.113" --network im-net --link=mysql-8 -p 443:443 imtest:latest
+
+
+--13DEC - Testing
+https://www.adictosaltrabajo.com/2019/01/08/haciendo-bdd-en-microservicios-hexagonales-spring-boot/
+https://github.com/dav-garcia/bdd-spring-boot
